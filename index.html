@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <header>
+        <h1>To do List</h1>
+    </header>
+    <main>
+        <section id="cabecalho">
+            <img src="imagens/cafe-200.png" alt="xícara de café" id="cafe">
+
+            <div id="escreva">
+                <h2 id="subTitulo">Suas tarefas</h2>
+            </div>
+        </section>
+
+        <section id="adicionar">
+            <button type="button" class="material-symbols-outlined" onclick="del()">delete</button>
+
+            <button type="button" class="material-symbols-outlined" onclick="add()">add</button>
+        </section>
+
+        <section id="tarefas">
+            
+        </section>
+    </main>
+
+    <dialog class="pop-up" id="TentativaExcluir">
+        <h3>Primeiro selecione alguma tarefa para excluir!</h3>
+        <button type="button">OK</button>
+    </dialog>
+
+    <dialog class="pop-up" id="salvar">
+        <h3>Escreva algo para salvar!</h3>
+        <button type="button">OK</button>
+    </dialog>
+
+    <dialog class="pop-up" id="AvisoExcluir">
+        <h3>Deseja mesmo apagar essas tarefas?</h3>
+        <button type="button" onclick="apagar()">SIM</button>
+        <button type="button" id="nao" onclick="naoApagar()">NÃO</button>
+    </dialog>
+    
+    <script src="script.js"></script>
+</body>
+</html>
