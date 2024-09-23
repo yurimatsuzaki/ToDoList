@@ -35,18 +35,18 @@
     </main>
 
     <dialog class="pop-up" id="TentativaExcluir">
-        <h3>Primeiro selecione alguma tarefa para excluir!</h3>
-        <button type="button">OK</button>
+        <h3>Primeiro selecione algo para excluir!</h3>
+        <button type="button" class="ok">OK</button>
     </dialog>
 
     <dialog class="pop-up" id="salvar">
         <h3>Escreva algo para salvar!</h3>
-        <button type="button">OK</button>
+        <button type="button" class="ok">OK</button>
     </dialog>
 
     <dialog class="pop-up" id="AvisoExcluir">
         <h3>Deseja mesmo apagar essas tarefas?</h3>
-        <button type="button" onclick="apagar()">SIM</button>
+        <button type="button" id="sim" onclick="apagar()">SIM</button>
         <button type="button" id="nao" onclick="naoApagar()">NÃO</button>
     </dialog>
     
