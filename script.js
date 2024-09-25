@@ -1,8 +1,4 @@
 const lista = document.getElementById('tarefas')
-/*
-let TarefaDiv = document.querySelectorAll('div.divTarefa')
-let chacar = document.querySelectorAll('input.check')
-*/
 const del = document.getElementsByTagName('button')[0]
 const popUp1 = document.getElementsByTagName('dialog')[0]
 const popUp2 = document.getElementsByTagName('dialog')[1]
@@ -12,58 +8,78 @@ const BtOK2 = document.getElementsByClassName('ok')[1]
 const BtSIM = document.getElementById('sim')
 const BtNAO = document.getElementById('nao')
 
-function add() {
+function div(){
     const divTarefa = document.createElement('div')
-    divTarefa.classList.add('divTarefa')
+    return divTarefa
+}
+
+function checkbox(){
+    const check  = document.createElement('input')
+    return check
+}
+
+function add() {
+    const divTask = div()
+    const ck = checkbox()
+    
+    divTask.classList.add('divTarefa')
     
     const textArea = document.createElement('textarea')
     textArea.classList.add('tarefa')
     textArea.placeholder = 'Digite sua tarefa...'
     textArea.maxLength = 100
     
-    const check  = document.createElement('input')
-    check.setAttribute('type', 'checkbox')
-    check.classList.add('check')
+    ck.setAttribute('type', 'checkbox')
+    ck.classList.add('check')
     
-    divTarefa.appendChild(textArea)
-    divTarefa.appendChild(check)
-    
-    lista.appendChild(divTarefa)
-    textArea.focus()
+    divTask.appendChild(textArea)
+    divTask.appendChild(ck)
 
-    check.addEventListener('click', function(){
-        if (check.checked) {
+    
+    lista.appendChild(divTask)
+    textArea.focus()
+    
+    ck.addEventListener('click', function(){
+        if (ck.checked == true) {
             textArea.style.textDecoration = 'line-through'
             textArea.style.color = 'white'
             textArea.style.backgroundColor = '#42008093'
+            
+            ck2.checked = true
         }else{
             textArea.style.textDecoration = 'none'
             textArea.style.color = 'white'
             textArea.style.backgroundColor = 'rgb(66, 0, 128)'
+            
+            ck2.checked = false
         }
     })
+    divTask2 = divTask
 }
 
+var divTask2
+const ck2 = checkbox()
 
 del.addEventListener('click', function(){
-    if(check.checked == false){
-        popUp1.showModal()
 
-        BtOK1.onclick = function(){
-            popUp1.close()
-        }
-    }   
-    if(check.checked == true){
+    if(ck2.checked == true){
         popUp3.showModal()
-        
         BtSIM.onclick = function(){
-            divTarefa.remove()
+            divTask2.remove()
             popUp3.close()
+            ck2.checked = false
         }
         
         BtNAO.onclick = function(){                 
             popUp3.close()
+            ck2.checked = true
         }
-        chacar.checked = false
+
     }
+    if(ck2.checked == false){
+        popUp1.showModal()
+        BtOK1.onclick = function(){
+            popUp1.close()
+        }
+    }   
 })
