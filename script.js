@@ -44,6 +44,9 @@ function add() {
             textArea.style.textDecoration = 'line-through'
             textArea.style.color = 'white'
             textArea.style.backgroundColor = '#42008093'
+
+            divTask.classList.add('marcado')
+            ck.classList.add('checado')
             
             ck2.checked = true
         }else{
@@ -54,6 +57,31 @@ function add() {
             ck2.checked = false
         }
     })
+
+    del.addEventListener('click', function(){
+        let divMarcada = document.querySelectorAll('div.divTarefa.marcado')
+        let ckMarcado = document.querySelectorAll('input.check.checado')
+        
+        if(ck.checked == true){
+            popUp3.showModal()
+            BtSIM.onclick = function(){
+                divMarcada.forEach(divMarcada => {
+                    divMarcada.remove()
+                })
+                ckMarcado.forEach(ckMarcado => {
+                    ckMarcado.checked = false
+                })
+                popUp3.close()
+
+                ck2.checked = false
+            }
+            BtNAO.onclick = function(){                 
+                popUp3.close()
+                ck.checked = true
+            }
+        }
+    })
+
     divTask2 = divTask
 }
 
@@ -61,21 +89,6 @@ var divTask2
 const ck2 = checkbox()
 
 del.addEventListener('click', function(){
-
-    if(ck2.checked == true){
-        popUp3.showModal()
-        BtSIM.onclick = function(){
-            divTask2.remove()
-            popUp3.close()
-            ck2.checked = false
-        }
-        
-        BtNAO.onclick = function(){                 
-            popUp3.close()
-            ck2.checked = true
-        }
-
-    }
     if(ck2.checked == false){
         popUp1.showModal()
         BtOK1.onclick = function(){
