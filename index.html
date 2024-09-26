@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diário</title>
+    <title>To-do List</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -33,21 +33,26 @@
             
         </section>
     </main>
-
+    
     <dialog class="pop-up" id="TentativaExcluir">
         <h3>Primeiro selecione algo para excluir!</h3>
         <button type="button" class="ok">OK</button>
     </dialog>
-
+    
     <dialog class="pop-up" id="salvar">
         <h3>Escreva algo para salvar!</h3>
         <button type="button" class="ok">OK</button>
     </dialog>
-
+    
     <dialog class="pop-up" id="AvisoExcluir">
         <h3>Deseja mesmo apagar essas tarefas?</h3>
         <button type="button" id="sim" onclick="apagar()">SIM</button>
         <button type="button" id="nao" onclick="naoApagar()">NÃO</button>
+    </dialog>
+    
+    <dialog class="pop-up" id="escreva-salve">
+        <h3>Primeiro salve a tarefa atual</h3>
+        <button type="button" class="ok">OK</button>
     </dialog>
     
     <script src="script.js"></script>
