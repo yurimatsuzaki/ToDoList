@@ -62,7 +62,7 @@ main{
     font-size: 2.3em;
 }
 
-#adicionar{
+#areaBtn{
     max-width: 690px;
     height: 60px;
     margin: 10px auto;
@@ -74,7 +74,7 @@ main{
     align-items: center;
 }
 
-#adicionar > button{
+#areaBtn > button{
     height: 40px;
     width: 40px;
     border-radius: 100%;
@@ -87,11 +87,11 @@ main{
     cursor: pointer;
 }
 
-#adicionar > button:hover{
+#areaBtn > button:hover{
     background-color: rgb(85, 2, 163);
 }
 
-#adicionar > .salvar{
+#areaBtn > .salvar{
     height: 40px;
     width: 70px;
     border-radius: 10px;
@@ -104,7 +104,7 @@ main{
     cursor: pointer;
 }
 
-#tarefas{
+#listaTarefas{
     max-width: 690px;
     margin: auto;
     border-radius: 10px;
@@ -116,7 +116,7 @@ main{
 }
 
 .divTarefa{
-    width: 300px;
+    width: 90%;
     margin: 10px;
     display: flex;
 }
