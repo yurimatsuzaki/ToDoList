@@ -1,74 +1,72 @@
-const listaTarefas = document.getElementById('listaTarefas')
-const areaBtn = document.getElementById('areaBtn')
-let armazenarTarefas = []
-let deletarTarefas = []
-const popUp1 = document.getElementsByTagName('dialog')[0]
-const popUp2 = document.getElementsByTagName('dialog')[1]
-const popUp3 = document.getElementsByTagName('dialog')[2]
-const popUp4 = document.getElementsByTagName('dialog')[3]
-const BtnOK1 = document.getElementsByClassName('ok')[0]
-const BtnOK2 = document.getElementsByClassName('ok')[1]
-const BtnOK3 = document.getElementsByClassName('ok')[2]
-const BtnSIM = document.getElementById('simDel')
-const BtnNAO = document.getElementById('naoDel')
-
-function criarTxtArea(){
-    const txtArea = document.createElement('textarea')
-    return txtArea
-}
-
-function criarCkBox(){
-    const ckBox = document.createElement('input')
-    return ckBox
-}
-
-function criarDivTarefa(){
-    const divTarefa = document.createElement('div')
-    return divTarefa
-}
-
-function criarBtnSalvar(){
-    const btnSalvar = document.createElement('button')
-    btnSalvar.innerText = 'Salvar'
-    btnSalvar.classList.add('salvar')
-    return btnSalvar
-}
-
-function salvarAlteracao(){
-   
-}
+const btnAdd = document.getElementById('btnAdd')
+const btnSave = document.getElementById('btnSave')
+const AreaTask = document.getElementById('listaTarefas')
+const DivTask = document.createElement('div')
+const Check = document.createElement('input').setAttribute('type', 'checkbox')
+const TextArea = document.createElement('textarea')
+const cBoxs = document.querySelectorAll('input#ck')
 
 function add(){
-    const TXTareaAdd = criarTxtArea()
-    const CKboxAdd = criarCkBox()
-    const DIVtarefaAdd = criarDivTarefa()
-    const BTNsalvarADD = criarBtnSalvar()
+    AreaTask.insertAdjacentHTML("beforeend", '<div class="divTarefa"><textarea placeholder="Digite sua tarefa..." class="tarefa" id="salveTask" onfocus="SaveEdition()" oninput="SaveEdition()"></textarea><input type="checkbox" id="ck"></div>')
+    
+    btnAdd.style.display='none'
+    btnSave.style.display='inline'
+}
 
-    TXTareaAdd.classList.add('tarefa')
-    TXTareaAdd.placeholder = 'Digite sua tarefa...'
-    TXTareaAdd.maxLength = 500
-    TXTareaAdd.addEventListener('input', function(){
-        this.style.height = 'auto'
-        this.style.height = this.scrollHeight + 'px'
-    })
+function save(){
+    const txtArea = document.getElementById('salveTask')
+    if(txtArea.value.length  == 0){
+        alert('digite algo')
+    }else{
+        btnAdd.style.display='inline'
+        btnSave.style.display='none'
+        txtArea.removeAttribute("id")
+    }
+}
 
-    CKboxAdd.setAttribute('type', 'checkbox')
-    CKboxAdd.classList.add('check')
-
-    DIVtarefaAdd.classList.add('divTarefa')
-    DIVtarefaAdd.appendChild(TXTareaAdd)
-    DIVtarefaAdd.appendChild(CKboxAdd)
-    listaTarefas.appendChild(DIVtarefaAdd)
-    TXTareaAdd.focus()
-    areaBtn.appendChild(BTNsalvarADD)
-
-    BTNsalvarADD.addEventListener('click', function(){
-        if(TXTareaAdd.textLength == 0 || TXTareaAdd.value == ' ' || TXTareaAdd.value == '  '){
-            alert('h')
-        }else{
-            BTNsalvarADD.style.display='none'
-            armazenarTarefas.push(`task_${String(TXTareaAdd.value)}`)
-            console.log(armazenarTarefas)
-        }
+function SaveEdition(){
+    btnAdd.style.display='none'
+    btnSave.style.display='inline'
+    
+    btnSave.addEventListener('click', function(){
+        btnAdd.style.display='inline'
+        btnSave.style.display='none'
     })
 }
+
+function del(){
+    const checkboxDEL = document.getElementById('ck')
+    const container = checkboxDEL.closest('.divTarefa')
+    if(checkboxDEL.checked){
+        container.remove()
+        btnAdd.style.display='inline'
+        btnSave.style.display='none'
+    }else{
+        alert("selecione algo")
+    }
+}
+
+cBoxs.forEach(ckBoxs => {
+    const container = ckBoxs.closest('.divTarefa')
+    const txtAreaMARK = container.querySelector('textarea.tarefa')
+    ckBoxs.addEventListener('change', function(){
+        if(ckBoxs.checked){
+            txtAreaMARK.classList.add('taskMarcada')
+        }else{
+            txtAreaMARK.classList.remove('taskMarcada')
+        }
+    })
+})
+
+/*function markTask(){
+    const checkboxMARK = document.getElementById('ck')
+    const ck = container.querySelector('input#ck')
+    
+    if(ck.checked){
+        txtAreaMARK.classList.add('taskMarcada')
+        console.log('bbbb')
+    }else{
+        txtAreaMARK.classList.remove('taskMarcada')
+    }
+
+}*/

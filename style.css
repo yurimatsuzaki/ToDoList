@@ -92,6 +92,7 @@ main{
 }
 
 #areaBtn > .salvar{
+    display: none;
     height: 40px;
     width: 70px;
     border-radius: 10px;
@@ -100,7 +101,7 @@ main{
     border: 0px;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.443);
     color: rgb(255, 255, 255);
-    background-color: rgb(66, 0, 128);
+    background-color: #420080;
     cursor: pointer;
 }
 
@@ -124,7 +125,7 @@ main{
 
 .tarefa{
     width: 90%;
-    min-height: 55px;
+    min-height: 25px;
     overflow-y: hidden;
     resize: none;
     margin: 5px;
@@ -138,6 +139,12 @@ main{
 .divTarefa > input{
     min-height: 30px;
     min-width: 30px;
+}
+
+.taskMarcada{
+    background-color: #8f4bcec9;
+    color: #ffffffd0;
+    text-decoration: line-through;
 }
 
 dialog{
